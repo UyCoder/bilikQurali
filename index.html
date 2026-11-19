@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بىلىك قۇرالى</title>
+  <meta name="description" content="ئوڭ مائۇس بىلەن تېكىستنى ئۇيغۇرچىلاشتۇرۇش، خەت نۇسخىسى ۋە چوڭلۇقىنى تەڭشەش." />
+  <meta property="og:title" content="بىلىك قۇرالى" />
+  <meta property="og:description" content="ئوڭ مائۇس بىلەن تېكىستنى ئۇيغۇرچىلاشتۇرۇش، خەت نۇسخىسى ۋە چوڭلۇقىنى تەڭشەش." />
+  <link rel="icon" type="image/png" href="icon48.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+    .host-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+    .host-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .host-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .host-brand img {
+      width: 40px;
+      height: 40px;
+    }
+    .host-brand h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #1e293b;
+    }
+    .host-brand p {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: #64748b;
+    }
+    .host-hint {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .sample-area {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 18px;
+      background: #fafafa;
+      min-height: 220px;
+      outline: none;
+    }
+    .sample-area:focus {
+      border-color: #3b82f6;
+      background: #ffffff;
+    }
+    #ext-context-menu {
+      position: fixed;
+      display: none;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      padding: 4px;
+      z-index: 1000000;
+      min-width: 180px;
+    }
+    .ext-context-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #1e293b;
+      text-align: right;
+      font-family: inherit;
+    }
+    .ext-context-item:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+    .ext-context-item img {
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="host-container">
+    <div class="host-header">
+      <div class="host-brand">
+        <img src="icon48.png" alt="بىلىك قۇرالى" />
+        <div>
+          <h1>بىلىك قۇرالى</h1>
+          <p>ئوڭ مائۇس بىلەن تېكىستنى ئۇيغۇرچىلاشتۇرۇش، خەت نۇسخىسى ۋە چوڭلۇقىنى تەڭشەش.</p>
+        </div>
+      </div>
+      <button id="open-bilik-btn" class="uyghur-format-button" type="button" style="float:none; margin:0;">بىلىك قۇرالىنى ئېچىش</button>
+    </div>
+
+    <div class="host-hint">
+      تۆۋەندىكى تېكىستنى تاللاپ ئوڭ مائۇسنى بېسىڭ ياكى يۇقىرىدىكى «بىلىك قۇرالىنى ئېچىش» كۇنۇپكىسىنى بېسىڭ. بۇ رايونغا ئۆزىڭىزنىڭ تېكىستىنى چاپلاپ سىناپ باقسىڭىزمۇ بولىدۇ.
+    </div>
+
+    <div id="sample-text" class="sample-area" contenteditable="true">
+      <p>ئۇيغۇر تىلى تارىختىن بۇيان مول مەدەنىيەت ۋە ئەدەبىيات خەزىنىسىنى ياراتقان گۈزەل تىللارنىڭ بىرىدۇر. بىلىك قۇرالى تور بەتلەردىكى تېكىستلەرنى ئوقۇشقا قولايلىق قىلىپ فورماتلاشقا ياردەم بېرىدۇ.</p>
+      <p>سىز خەت نۇسخىسى، خەت چوڭلۇقى ۋە قۇر ئارىلىقىنى خالىغانچە تەڭشىيەلەيسىز. شۇنداقلا ئاۋازلىق ئوقۇش ئىقتىدارى ئارقىلىق تېكىستنى جۈملە بويىچە ئاڭلىيالايسىز.</p>
+      <p>يېزىش يۆنىلىشىنى ئوڭدىن سولغا ياكى سولدىن ئوڭغا ئالماشتۇرۇپ، تەكشى توغرىلاش كۇنۇپكىسى بىلەن بەت كۆرۈنۈشىنى تېخىمۇ رەتلىك قىلغىلى بولىدۇ.</p>
+    </div>
+  </div>
+
+  <div id="ext-context-menu" role="menu"></div>
+
+  <script>
+    (function () {
+      const installedListeners = [];
+      const contextMenuClickedListeners = [];
+      const messageListeners = [];
+      const registeredMenus = [];
+
+      window.chrome = {
+        runtime: {
+          onInstalled: {
+            addListener(fn) {
+              installedListeners.push(fn);
+            }
+          },
+          onMessage: {
+            addListener(fn) {
+              messageListeners.push(fn);
+            }
+          }
+        },
+        contextMenus: {
+          create(options) {
+            registeredMenus.push(options);
+          },
+          onClicked: {
+            addListener(fn) {
+              contextMenuClickedListeners.push(fn);
+            }
+          }
+        },
+        tabs: {
+          sendMessage(tabId, message) {
+            messageListeners.forEach((fn) => fn(message, { tab: { id: tabId } }, () => {}));
+          }
+        }
+      };
+
+      window.__triggerBilikContextMenus = function () {
+        installedListeners.forEach((fn) => fn({ reason: 'install' }));
+      };
+
+      window.__invokeMenuItem = function (menuItemId) {
+        contextMenuClickedListeners.forEach((fn) => fn({ menuItemId }, { id: 1 }));
+      };
+
+      window.__getRegisteredMenus = function () {
+        return registeredMenus;
+      };
+    })();
+  </script>
+  <script src="background.js"></script>
+  <script src="content.js"></script>
+  <script>
+    (function () {
+      window.__triggerBilikContextMenus();
+
+      const contextMenuEl = document.getElementById('ext-context-menu');
+      const sampleEl = document.getElementById('sample-text');
+      const openBtn = document.getElementById('open-bilik-btn');
+      let savedRange = null;
+
+      function saveCurrentSelection() {
+        const sel = window.getSelection();
+        if (sel && sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed) {
+          savedRange = sel.getRangeAt(0).cloneRange();
+        }
+      }
+
+      function ensureSelection() {
+        const sel = window.getSelection();
+        if (sel && sel.rangeCount > 0 && !sel.getRangeAt(0).collapsed) {
+          return;
+        }
+        if (savedRange) {
+          sel.removeAllRanges();
+          sel.addRange(savedRange);
+          return;
+        }
+        const range = document.createRange();
+        range.selectNodeContents(sampleEl);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+
+      document.addEventListener('mouseup', saveCurrentSelection);
+      document.addEventListener('keyup', saveCurrentSelection);
+
+      document.addEventListener('contextmenu', function (e) {
+        const sel = window.getSelection();
+        const hasSelection = sel && sel.toString().trim().length > 0;
+        const menus = window.__getRegisteredMenus();
+        if (!hasSelection || menus.length === 0) {
+          contextMenuEl.style.display = 'none';
+          return;
+        }
+
+        e.preventDefault();
+        saveCurrentSelection();
+        contextMenuEl.innerHTML = '';
+
+        menus.forEach((menu) => {
+          const item = document.createElement('button');
+          item.type = 'button';
+          item.className = 'ext-context-item';
+          item.innerHTML = '<img src="icon16.png" alt="" /><span></span>';
+          item.querySelector('span').textContent = menu.title;
+          item.addEventListener('click', function () {
+            contextMenuEl.style.display = 'none';
+            ensureSelection();
+            window.__invokeMenuItem(menu.id);
+          });
+          contextMenuEl.appendChild(item);
+        });
+
+        contextMenuEl.style.left = Math.min(e.clientX, window.innerWidth - 200) + 'px';
+        contextMenuEl.style.top = Math.min(e.clientY, window.innerHeight - 60) + 'px';
+        contextMenuEl.style.display = 'block';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!contextMenuEl.contains(e.target)) {
+          contextMenuEl.style.display = 'none';
+        }
+      });
+
+      openBtn.addEventListener('mousedown', function () {
+        saveCurrentSelection();
+      });
+
+      openBtn.addEventListener('click', function () {
+        ensureSelection();
+        const menus = window.__getRegisteredMenus();
+        const menuId = menus.length > 0 ? menus[0].id : 'formatUyghurPro';
+        window.__invokeMenuItem(menuId);
+      });
+    })();
+  </script>
+</body>
+</html>
